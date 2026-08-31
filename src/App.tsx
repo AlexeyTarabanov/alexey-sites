@@ -50,7 +50,7 @@ function ProjectMockup({ kind }: { kind: "psychology" | "english" }) {
   return (
     <div className={`project-visual ${kind}`} aria-label={psychology ? "Макет сайта психолога" : "Макет сайта преподавателя английского"}>
       <div className="browser">
-        <div className="browser-bar"><i/><i/><i/><span>{psychology ? "zhanna-psy.ru" : "lina-english.ru"}</span></div>
+        <div className="browser-bar"><i/><i/><i/><span>{psychology ? "jeanna-psy.ru" : "pureli.ru"}</span></div>
         <div className="browser-content">
           <div className="preview-copy">
             <small>{psychology ? "Психолог · консультации" : "English for life"}</small>
@@ -153,11 +153,30 @@ export default function App() {
         <div className="section-heading" data-reveal><p className="eyebrow">Портфолио</p><h2>Последние работы</h2><p>Несколько сайтов, которые уже можно открыть и посмотреть вживую.</p></div>
         <article className="project-card warm" data-reveal>
           <ProjectMockup kind="psychology"/>
-          <div className="project-copy"><span>01</span><h3>Жанна — психолог</h3><p>Персональный сайт психолога: услуги, информация о специалисте, подход к работе и удобный переход к записи на консультацию.</p><small>Дизайн · Адаптивная версия · Разработка · Размещение · HTTPS</small><a className="project-link" href="#contact">Посмотреть сайт <ArrowRight size={18}/></a></div>
+          <div className="project-copy"><span>01</span>
+            <h3>Жанна — психолог</h3>
+            <p>Персональный сайт психолога: услуги, информация о специалисте, подход к работе и удобный переход к записи на консультацию.</p>
+            <small>Дизайн · Адаптивная версия · Разработка · Размещение · HTTPS</small>
+            <a className="project-link"
+                href="https://jeanna-psy.ru/"
+                target="_blank"
+                rel="noopener noreferrer">
+              Посмотреть сайт <ArrowRight size={18}/>
+            </a>
+          </div>
         </article>
         <article className="project-card blue" data-reveal>
           <ProjectMockup kind="english"/>
-          <div className="project-copy"><span>02</span><h3>Лина — преподаватель английского</h3><p>Сайт для преподавателя английского языка. Основная задача — понятно представить услуги для родителей и школьников и привести посетителя к записи на занятие.</p><small>Дизайн · Адаптивная версия · Разработка · Размещение · HTTPS</small><a className="project-link" href="https://lina-english.alextarabanov.chatgpt.site" target="_blank" rel="noreferrer">Посмотреть сайт <ArrowRight size={18}/></a></div>
+          <div className="project-copy"><span>02</span>
+            <h3>Лина — преподаватель английского</h3>
+            <p>Сайт для преподавателя английского языка. Основная задача — понятно представить услуги для родителей и школьников и привести посетителя к записи на занятие.</p>
+            <small>Дизайн · Адаптивная версия · Разработка · Размещение · HTTPS</small>
+            <a className="project-link"
+               href="https://www.pureli.ru"
+               target="_blank"
+               rel="noreferrer">Посмотреть сайт <ArrowRight size={18}/>
+            </a>
+          </div>
         </article>
       </section>
 
