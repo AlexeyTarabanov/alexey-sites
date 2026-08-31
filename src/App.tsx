@@ -4,46 +4,17 @@ import { ArrowDownRight, ArrowRight, Check, Menu, MessageCircle, X } from "lucid
 const telegramUrl = "https://t.me/Alexey_Tarabanov";
 const emailAddress = "tarabanov.alexey@gmail.com";
 const emailUrl = `mailto:${emailAddress}`;
-const audiences = ["Психологи", "Репетиторы", "Консультанты", "Фотографы", "Тренеры", "Мастера", "Эксперты", "Малый бизнес"];
-const servicePlans = [
-  {
-    title: "Сайт-визитка",
-    label: "У вас уже есть тексты и фотографии",
-    price: "от 10 000 ₽",
-    description:
-        "Подойдёт, если у вас уже есть основные материалы и понимание того, что должно быть на сайте.",
-    items: [
-      "Одна страница",
-      "До 5–6 основных смысловых блоков",
-      "Адаптация под телефон, планшет и компьютер",
-      "Размещение ваших текстов и фотографий",
-      "Кнопки связи и контакты",
-      "Подключение домена",
-      "HTTPS",
-      "Размещение сайта в интернете",
-      "До двух раундов небольших правок",
-    ],
-  },
-  {
-    title: "Индивидуальный сайт под ключ",
-    label: "Помогаю со структурой и подачей",
-    price: "от 15 000 ₽",
-    description:
-        "Подойдёт, если нужно помочь со структурой, подачей материалов и оформить сайт под вашу деятельность и аудиторию.",
-    items: [
-      "Помощь с определением структуры сайта",
-      "Проработка порядка и содержания блоков",
-      "Помощь с формулировками и подачей материалов",
-      "Индивидуальное визуальное оформление",
-      "Адаптация под телефон, планшет и компьютер",
-      "Размещение текстов и фотографий",
-      "Кнопки связи и контакты",
-      "Подключение домена",
-      "HTTPS",
-      "Размещение сайта в интернете",
-      "До трёх раундов правок",
-    ],
-  },
+const audiences = ["Психологи", "Репетиторы", "Консультанты", "Фотографы", "Тренеры", "Бьюти-специалисты", "Эксперты", "Малый бизнес", "События и запуски"];
+const includedFeatures = [
+  "Помощь со структурой страницы",
+  "Визуальное оформление",
+  "Адаптация под телефон, планшет и компьютер",
+  "Размещение текстов и изображений",
+  "Кнопки связи",
+  "Подключение домена",
+  "HTTPS",
+  "Публикация",
+  "До 2 раундов правок",
 ];
 const steps = [
   ["Обсуждаем", "Вы рассказываете о своей деятельности, клиентах и о том, какую задачу должен решать сайт."],
@@ -70,25 +41,21 @@ function Logo() {
 
 function ProjectMockup({ kind }: { kind: "psychology" | "english" }) {
   const psychology = kind === "psychology";
+  const projectName = psychology ? "Сайт для психолога" : "Сайт для преподавателя английского";
+  const desktopSrc = psychology ? "/projects/jeanna-desktop.webp" : "/projects/lina-desktop.webp";
+  const mobileSrc = psychology ? "/projects/jeanna-mobile.webp" : "/projects/lina-mobile.webp";
   return (
-    <div className={`project-visual ${kind}`} aria-label={psychology ? "Макет сайта психолога" : "Макет сайта преподавателя английского"}>
+    <div className={`project-visual ${kind}`} aria-label={projectName}>
       <div className="browser">
         <div className="browser-bar"><i/><i/><i/><span>{psychology ? "jeanna-psy.ru" : "pureli.ru"}</span></div>
         <div className="browser-content">
-          <div className="preview-copy">
-            <small>{psychology ? "Психолог · консультации" : "English for life"}</small>
-            <strong>{psychology ? <>Место, где<br/>можно быть собой</> : <>Английский,<br/><em>который работает</em></>}</strong>
-            <span>{psychology ? "Записаться на встречу" : "Начать заниматься"}</span>
-          </div>
-          <div className="preview-art"><div/><i/></div>
+          <img src={desktopSrc} alt={`${projectName}, desktop-версия`} loading="lazy" />
         </div>
       </div>
       <div className="phone">
         <b/>
         <div className="phone-screen">
-          <small>{psychology ? "Жанна" : "Lina.English"}</small>
-          <strong>{psychology ? "Бережно к себе" : "Speak with confidence"}</strong>
-          <i/><span>Подробнее</span>
+          <img src={mobileSrc} alt={`${projectName}, mobile-версия`} loading="lazy" />
         </div>
       </div>
     </div>
@@ -144,8 +111,8 @@ export default function App() {
         <div className="hero-copy" data-reveal>
           <p className="eyebrow">Сайты для специалистов и малого бизнеса</p>
           <h1>Сайты, которые помогают рассказать о вашем деле.</h1>
-          <p className="hero-lead">Создаю современные сайты-визитки и небольшие лендинги для специалистов и малого бизнеса — от идеи до готовой ссылки.</p>
-          <p className="muted">Вам не нужно разбираться в дизайне, доменах и технических настройках. Я беру эту часть на себя.</p>
+          <p className="hero-lead">Сайты-визитки и промо-страницы для специалистов, небольших проектов и событий — от идеи до готовой ссылки.</p>
+          <p className="muted">Для частной практики, услуг, мероприятий, ретритов, интенсивов и отдельных запусков. Вам не нужно разбираться в дизайне, доменах и технических настройках.</p>
           <div className="hero-actions">
             <a className="button" href={telegramUrl} target="_blank" rel="noopener noreferrer">Обсудить сайт <ArrowRight size={18}/></a>
             <a className="text-link" href="#works">Посмотреть работы <ArrowDownRight size={18}/></a>
@@ -173,11 +140,11 @@ export default function App() {
       </section>
 
       <section className="works section-pad shell" id="works">
-        <div className="section-heading" data-reveal><p className="eyebrow">Портфолио</p><h2>Последние работы</h2><p>Несколько сайтов, которые уже можно открыть и посмотреть вживую.</p></div>
+        <div className="section-heading" data-reveal><p className="eyebrow">Работы</p><h2>Проекты, которые уже работают</h2><p>Несколько проектов, которые можно открыть и посмотреть вживую.</p></div>
         <article className="project-card warm" data-reveal>
           <ProjectMockup kind="psychology"/>
           <div className="project-copy"><span>01</span>
-            <h3>Жанна — психолог</h3>
+            <h3>Сайт для психолога</h3>
             <p>Персональный сайт психолога: услуги, информация о специалисте, подход к работе и удобный переход к записи на консультацию.</p>
             <small>Дизайн · Адаптивная версия · Разработка · Размещение · HTTPS</small>
             <a className="project-link"
@@ -191,7 +158,7 @@ export default function App() {
         <article className="project-card blue" data-reveal>
           <ProjectMockup kind="english"/>
           <div className="project-copy"><span>02</span>
-            <h3>Лина — преподаватель английского</h3>
+            <h3>Сайт для преподавателя английского</h3>
             <p>Сайт для преподавателя английского языка. Основная задача — понятно представить услуги для родителей и школьников и привести посетителя к записи на занятие.</p>
             <small>Дизайн · Адаптивная версия · Разработка · Размещение · HTTPS</small>
             <a className="project-link"
@@ -205,31 +172,33 @@ export default function App() {
 
       <section className="specialization shell" data-reveal>
         <p className="eyebrow">Специализация</p>
-        <div><h2>Небольшие сайты без лишней сложности</h2><p>Моя специализация — сайты-визитки и небольшие лендинги для частных специалистов и малого бизнеса. Такой формат позволяет сосредоточиться на дизайне, содержании и быстром запуске сайта без лишней технической сложности.</p></div>
+        <div><h2>Небольшие сайты и промо-страницы без лишней сложности</h2><p>Моя специализация — сайты-визитки и промо-страницы для специалистов, небольших проектов и событий. Такой формат подходит для частной практики, услуг, мероприятий, ретритов, интенсивов и отдельных запусков: можно сосредоточиться на дизайне, содержании и быстром запуске без лишней технической сложности.</p></div>
       </section>
 
       <section className="pricing section-pad" id="price">
         <div className="shell" data-reveal>
-          <div className="pricing-heading"><p className="eyebrow light">Стоимость</p><h2>Два понятных формата</h2></div>
-          <div className="plans">
-            {servicePlans.map((plan) => <article className="plan" key={plan.title}>
-              <span className="plan-label">{plan.label}</span><h3>{plan.title}</h3><div className="plan-price">{plan.price}</div><p>{plan.description}</p>
-              <div className="plan-list">{plan.items.map((item) => <span key={item}><Check size={17}/>{item}</span>)}</div>
-            </article>)}
+          <div className="pricing-heading"><p className="eyebrow light">Стоимость</p><h2>Понятная стоимость</h2></div>
+          <article className="price-product">
+            <div className="price-product-main">
+              <span className="plan-label">Один понятный продукт</span>
+              <h3>Сайт-визитка или промо-страница</h3>
+              <div className="plan-price">от 10 000 ₽</div>
+              <p>Для специалиста, услуги, небольшого проекта, мероприятия или отдельного запуска.</p>
+              <a className="button light-button" href={telegramUrl} target="_blank" rel="noopener noreferrer">Обсудить сайт <ArrowRight size={18}/></a>
+            </div>
+            <div className="included">
+              <span>Что входит</span>
+              <div className="included-list">{includedFeatures.map((item) => <div key={item}><Check size={17}/>{item}</div>)}</div>
+              <small>Раунд правок — один согласованный список изменений после просмотра версии страницы.</small>
+            </div>
+          </article>
+          <div className="pricing-note">
+            <p>Итоговая стоимость зависит от объёма страницы и количества материалов.</p>
+            <div>
+              <strong>Сначала обсуждаем задачу — потом фиксируем стоимость.</strong>
+              <small>Вы заранее знаете итоговую цену до начала работы.</small>
+            </div>
           </div>
-          <div className="pricing-footer">
-            <p>
-              Итоговая стоимость зависит от количества блоков, материалов и объёма работы над структурой и дизайном.
-              Перед началом работы фиксируем стоимость.
-            </p>
-            <small>
-              Раунд правок — один согласованный список изменений после просмотра версии сайта.
-            </small>
-            <small>
-              Домен оплачивается отдельно и принадлежит заказчику.
-            </small>
-
-            <a className="button light-button" href={telegramUrl} target="_blank" rel="noopener noreferrer">Обсудить сайт <ArrowRight size={18}/></a></div>
         </div>
       </section>
 
