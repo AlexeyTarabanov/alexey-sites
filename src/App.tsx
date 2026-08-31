@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { ArrowDownRight, ArrowRight, Check, Menu, MessageCircle, X } from "lucide-react";
+import {useEffect, useState} from "react";
+import {ArrowDownRight, ArrowRight, Check, Menu, MessageCircle, X} from "lucide-react";
 
 const telegramUrl = "https://t.me/Alexey_Tarabanov";
 const emailAddress = "tarabanov.alexey@gmail.com";
@@ -23,10 +23,10 @@ const steps = [
   ["Запускаю", "Подключаю домен, HTTPS и размещаю сайт в интернете."],
 ];
 const benefits = [
-  ["Всё под ключ", "От структуры страницы до размещения сайта в интернете."],
+  ["Всё под ключ", "От структуры страницы до размещения в интернете."],
   ["Адаптация под телефон", "Сайт удобно выглядит и работает на смартфонах, планшетах и компьютерах."],
-  ["Сайт принадлежит вам", "Домен оформляется на заказчика, а после завершения работы я передаю исходный код сайта. Проект не привязан к конкретному конструктору и при необходимости может быть передан другому разработчику."],
-  ["Без обязательной ежемесячной подписки", "Для таких сайтов не требуется обязательная ежемесячная плата за конструктор или размещение."],
+  ["Проект принадлежит вам", "Домен оформляется на заказчика, а после завершения работы я передаю исходный код. Проект не привязан к конкретному конструктору и при необходимости может быть передан другому разработчику."],
+  ["Без обязательной ежемесячной подписки", "Для такого формата не требуется обязательная ежемесячная плата за конструктор или размещение."],
 ];
 const faq = [
   ["У меня нет технического задания. Можно обратиться?", "Да. Достаточно рассказать о себе, своей деятельности и о том, для чего нужен сайт. Структуру и формат можно определить вместе."],
@@ -36,7 +36,7 @@ const faq = [
 ];
 
 function Logo() {
-  return <a className="logo" href="#top"><span>Алексей Тарабанов</span><small>Создание сайтов</small></a>;
+  return <a className="logo" href="#top"><span>Алексей Тарабанов</span><small>Веб-разработка</small></a>;
 }
 
 function ProjectMockup({ kind }: { kind: "psychology" | "english" }) {
@@ -90,31 +90,31 @@ export default function App() {
           <nav className="desktop-nav">
             <a href="#works">Работы</a><a href="#price">Стоимость</a>
             <a href="#process">Как работаем</a><a href="#contact">Контакты</a>
-            <a className="button small" href={telegramUrl} target="_blank" rel="noopener noreferrer">Обсудить сайт</a>
+            <a className="button small" href={telegramUrl} target="_blank" rel="noopener noreferrer">Обсудить проект</a>
           </nav>
-          <button className="menu-button" type="button" aria-label="Открыть меню" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}><Menu size={22}/></button>
-          {menuOpen && <div className="mobile-menu-layer" role="presentation" onClick={() => setMenuOpen(false)}>
-            <aside className="mobile-sheet" role="dialog" aria-modal="true" aria-label="Навигация" onClick={(event) => event.stopPropagation()}>
-              <div className="mobile-sheet-header"><div><strong>Алексей Тарабанов</strong><span>Создание сайтов под ключ</span></div><button type="button" aria-label="Закрыть меню" onClick={() => setMenuOpen(false)}><X size={22}/></button></div>
-              <nav className="mobile-nav">
-                {[["Работы","#works"],["Стоимость","#price"],["Как работаем","#process"],["Контакты","#contact"]].map(([label,href]) => (
-                  <a href={href} key={href} onClick={() => setMenuOpen(false)}>{label}</a>
-                ))}
-                <a className="button" href={telegramUrl} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Обсудить сайт</a>
-              </nav>
-            </aside>
-          </div>}
+          <button className="menu-button" type="button" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"} aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}><Menu size={22}/></button>
         </div>
       </header>
+      {menuOpen && <div className="mobile-menu-layer" role="presentation" onClick={() => setMenuOpen(false)}>
+        <aside className="mobile-sheet" role="dialog" aria-modal="true" aria-label="Навигация" onClick={(event) => event.stopPropagation()}>
+          <div className="mobile-sheet-header"><div><strong>Алексей Тарабанов</strong><span>Создание сайтов под ключ</span></div><button type="button" aria-label="Закрыть меню" onClick={() => setMenuOpen(false)}><X size={22}/></button></div>
+          <nav className="mobile-nav">
+            {[["Работы","#works"],["Стоимость","#price"],["Как работаем","#process"],["Контакты","#contact"]].map(([label,href]) => (
+              <a href={href} key={href} onClick={() => setMenuOpen(false)}>{label}</a>
+            ))}
+            <a className="button" href={telegramUrl} target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Обсудить проект</a>
+          </nav>
+        </aside>
+      </div>}
 
       <section className="hero shell">
         <div className="hero-copy" data-reveal>
-          <p className="eyebrow">Сайты для специалистов и малого бизнеса</p>
+          <p className="eyebrow">Для частной практики и запусков</p>
           <h1>Сайты, которые помогают рассказать о вашем деле.</h1>
-          <p className="hero-lead">Сайты-визитки и промо-страницы для специалистов, небольших проектов и событий — от идеи до готовой ссылки.</p>
+          <p className="hero-lead">Делаю визитки и промо-страницы для специалистов, небольших проектов и событий — от идеи до готовой ссылки.</p>
           <p className="muted">Для частной практики, услуг, мероприятий, ретритов, интенсивов и отдельных запусков. Вам не нужно разбираться в дизайне, доменах и технических настройках.</p>
           <div className="hero-actions">
-            <a className="button" href={telegramUrl} target="_blank" rel="noopener noreferrer">Обсудить сайт <ArrowRight size={18}/></a>
+            <a className="button" href={telegramUrl} target="_blank" rel="noopener noreferrer">Обсудить проект <ArrowRight size={18}/></a>
             <a className="text-link" href="#works">Посмотреть работы <ArrowDownRight size={18}/></a>
           </div>
           <div className="price-note"><span>Сайт-визитка под ключ</span><strong>от 10 000 ₽</strong></div>
@@ -172,7 +172,7 @@ export default function App() {
 
       <section className="specialization shell" data-reveal>
         <p className="eyebrow">Специализация</p>
-        <div><h2>Небольшие сайты и промо-страницы без лишней сложности</h2><p>Моя специализация — сайты-визитки и промо-страницы для специалистов, небольших проектов и событий. Такой формат подходит для частной практики, услуг, мероприятий, ретритов, интенсивов и отдельных запусков: можно сосредоточиться на дизайне, содержании и быстром запуске без лишней технической сложности.</p></div>
+        <div><h2>Небольшие страницы без лишней сложности</h2><p>Моя специализация — визитки и промо-страницы для специалистов, небольших проектов и событий. Такой формат подходит для частной практики, услуг, мероприятий, ретритов, интенсивов и отдельных запусков: можно сосредоточиться на дизайне, содержании и быстром запуске без лишней технической сложности.</p></div>
       </section>
 
       <section className="pricing section-pad" id="price">
@@ -181,10 +181,10 @@ export default function App() {
           <article className="price-product">
             <div className="price-product-main">
               <span className="plan-label">Один понятный продукт</span>
-              <h3>Сайт-визитка или промо-страница</h3>
+              <h3>Визитка или промо-страница</h3>
               <div className="plan-price">от 10 000 ₽</div>
               <p>Для специалиста, услуги, небольшого проекта, мероприятия или отдельного запуска.</p>
-              <a className="button light-button" href={telegramUrl} target="_blank" rel="noopener noreferrer">Обсудить сайт <ArrowRight size={18}/></a>
+              <a className="button light-button" href={telegramUrl} target="_blank" rel="noopener noreferrer">Обсудить проект <ArrowRight size={18}/></a>
             </div>
             <div className="included">
               <span>Что входит</span>
@@ -203,7 +203,7 @@ export default function App() {
       </section>
 
       <section className="process section-pad shell" id="process">
-        <div className="section-heading" data-reveal><p className="eyebrow">Как проходит работа</p><h2>От идеи до рабочего сайта</h2></div>
+        <div className="section-heading" data-reveal><p className="eyebrow">Как проходит работа</p><h2>От идеи до готовой ссылки</h2></div>
         <div className="steps" data-reveal>{steps.map(([title,text], index) => <article key={title}><span>0{index+1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
         <div className="result-banner" data-reveal><MessageCircle size={28}/><p>В результате вы получаете не архив с файлами, а полностью работающий сайт, который можно сразу отправлять клиентам.</p></div>
       </section>
@@ -216,7 +216,7 @@ export default function App() {
       </section>
 
       <section className="about section-pad shell" data-reveal>
-        <div><p className="eyebrow">Немного обо мне</p><h2>Кто делает ваш сайт</h2></div>
+        <div><p className="eyebrow">Немного обо мне</p><h2>Кто делает проект</h2></div>
         <div className="about-copy"><p>Меня зовут Алексей. Я разработчик и занимаюсь созданием и техническим запуском сайтов. Моя задача — сделать процесс максимально простым для заказчика: обсудить идею, собрать сайт, разместить его и передать уже готовый результат.</p><strong>Работаю напрямую, без менеджеров и посредников.</strong></div>
       </section>
 
@@ -228,7 +228,7 @@ export default function App() {
       </section>
 
       <section className="final-cta shell" id="contact" data-reveal>
-        <div><p className="eyebrow light">Можно без готового ТЗ</p><h2>Есть идея сайта?</h2><p>Напишите пару слов о себе и своей деятельности. Я предложу, каким может быть сайт и с чего лучше начать.</p><small>Можно написать даже без готового технического задания.</small></div>
+        <div><p className="eyebrow light">Можно без готового ТЗ</p><h2>Есть идея проекта?</h2><p>Напишите пару слов о себе и своей деятельности. Я предложу, каким может быть формат страницы и с чего лучше начать.</p><small>Можно написать даже без готового технического задания.</small></div>
         <div className="cta-actions"><a className="button light-button" href={telegramUrl} target="_blank" rel="noopener noreferrer">Написать в Telegram <ArrowRight size={18}/></a><a href="#works">Посмотреть работы</a></div>
       </section>
 
